@@ -1,0 +1,97 @@
+<div class="container-fluid">
+  <h2>{{title}}</h2>
+
+  <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)">
+    <div class="row form-group">
+      <div class="col-md-1">
+        <label for="firstname">First Name</label>
+      </div>
+      <div class="col-md-2">
+        <input type="text" class="form-control" name="firstname" #fname="ngModel" ngModel>
+      </div>
+    </div>
+    <div class="row form-group">
+      <div class="col-md-1">
+        <label for="lastname">Last Name</label>
+      </div>
+      <div class="col-md-2">
+        <input type="text" class="form-control" name="lastname" #lname="ngModel" ngModel>
+      </div>
+    </div>
+    <div class="row form-group">
+      <div class="col-md-1">
+        <label for="email">Email </label>
+      </div>
+      <div class="col-md-2">
+        <input type="text" class="form-control" id="email" name="email" #email="ngModel" ngModel>
+      </div>
+    </div>
+    <div class="row form-group">
+      <div class="col-md-1">
+        <label for="gender">Geneder</label>
+      </div>
+      <div class="col-sm-1">
+        <input type="radio" class="form-control" value="male" name="gender" #gender="ngModel" ngModel> Male
+        <input type="radio" class="form-control" value="female" name="gender" #gender="ngModel" ngModel> Female
+      </div>
+    </div>
+    <div class="row form-group">
+      <div class="col-md-1">
+        <label for="isMarried">Married</label>
+      </div>
+      <div class="col-sm-1">
+        <input type="checkbox" class="form-control" name="isMarried" #isMarried="ngModel" ngModel>
+      </div>
+    </div>
+    <div class="row form-group">
+      <div class="col-md-1">
+        <label for="country">Country</label>
+      </div>
+      <div class="col-md-2">
+        <select name="country" class="form-control" #country="ngModel" ngModel>
+          <option [ngValue]="c.id" *ngFor="let c of countryList">
+            {{c.name}}
+          </option>
+        </select>
+      </div>
+    </div>
+
+
+    <div ngModelGroup="address">
+      <div class="row form-group">
+        <div class="col-md-1">
+          <label for="city">City</label>
+        </div>
+        <div class="col-md-2">
+          <input type="text" class="form-control" name="city" ngModel>
+        </div>
+      </div>
+      <div class="row form-group">
+        <div class="col-md-1">
+          <label for="street">Street</label>
+        </div>
+        <div class="col-md-2">
+          <input type="text" class="form-control" name="street" ngModel>
+        </div>
+      </div>
+      <div class="row form-group">
+        <div class="col-md-1">
+          <label for="pincode">Pin Code</label>
+        </div>
+        <div class="col-md-2">
+          <input type="text" class="form-control" name="pincode" ngModel>
+        </div>
+      </div>
+    </div>
+    <div class="row form-group">
+      <div class="col-md-2">
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </div>
+    </div>
+  </form>
+  <br>
+  <pre>Value : {{contactForm.value | json }} </pre>
+  <pre>Valid : {{contactForm.valid}} </pre>
+  <pre>Touched : {{contactForm.touched  }} </pre>
+  <pre>Submitted : {{contactForm.submitted  }} </pre>
+</div>
